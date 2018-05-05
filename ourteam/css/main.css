@@ -1,0 +1,26 @@
+@font-face {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 100;
+    src:
+      local("Nunito"),
+      url("/modules/ourteam/fonts/Nunito-Regular.ttf") format("truetype");
+}
+
+#team-member-intro-whole, #team-welcome-message {
+    font-family: Nunito;
+    font-size: 110%;
+}
+
+#team-member {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#team-member-img-wrapper {
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+}
