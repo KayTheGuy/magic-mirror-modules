@@ -16,14 +16,14 @@ Module.register("ourteam", {
 	start: function() {
 		Log.log(this.name + ' is started!');
 		if(!this.config.bios) {
-			this.setupBios();
+			this.setUpBios();
 		}
 		if (this.config.images.length == 0) {
 			this.sendSocketNotification("GET_TEAM_IMAGES", {"path": ('.' + this.config.relPath) });
 		}
 	},
 
-	setupBios: function() {
+	setUpBios: function() {
 		this.config.bios = new Map([
 			["Kayhan", "<br/> Kayhan: <br/> Hates chocolate!"],
 			["Nader", "<br/> Nader: <br/> Early bird!"],
@@ -67,7 +67,7 @@ Module.register("ourteam", {
 		div.setAttribute('id', 'team-welcome-message');
 		div.innerHTML = `
 		Hi Folks! <br/><br/> 
-		Welocme to SAP\'s first Magic Mirror! <br/>
+		Welocme to SAP\'s first Magic Mirror! <br/><br/>
 		Here's a quick intro about our team ...
 		`;
 		return div;
