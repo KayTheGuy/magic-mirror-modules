@@ -28,7 +28,7 @@ Module.register("ourteam", {
 			["Kayhan", "<br/> Kayhan: <br/> Hates chocolate!"],
 			["Nader", "<br/> Nader: <br/> Early bird!"],
 			["Kai", "<br/> Kai: <br/> Eats chocolate and rice all the time!"],
-			["Wongi", "<br/> Wongi: <br/> Hates Avocado!"],
+			["Wongi", "<br/> Wongi: <br/> Hates avocado!"],
 			["Bing", "<br/> Bing: <br/> Doesn't follow the news at all!"]
 		]);
 	},
