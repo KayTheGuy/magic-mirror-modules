@@ -8,12 +8,12 @@ var utils = require("./utils.js");
 
 module.exports = NodeHelper.create({
 
-	socketNotificationReceived: function(notification, payload) {
-		if (notification === "GET_TEAM_IMAGES") {
+    socketNotificationReceived(notification, payload) {
+        if (notification === "GET_TEAM_IMAGES") {
             var images = utils.getPics(payload.path);
             this.sendSocketNotification("TEAM_IMAGES_FETCHED", images);
-		}
+        }
         return;
     }
-    
+
 });

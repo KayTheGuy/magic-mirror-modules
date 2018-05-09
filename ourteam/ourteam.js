@@ -13,17 +13,19 @@ Module.register("ourteam", {
 		bios: null
 	},
 
-	start: function() {
+	start() {
 		Log.log(this.name + ' is started!');
-		if(!this.config.bios) {
+		if (!this.config.bios) {
 			this.setUpBios();
 		}
 		if (this.config.images.length == 0) {
-			this.sendSocketNotification("GET_TEAM_IMAGES", {"path": ('.' + this.config.relPath) });
+			this.sendSocketNotification("GET_TEAM_IMAGES", {
+				"path": ('.' + this.config.relPath)
+			});
 		}
 	},
 
-	setUpBios: function() {
+	setUpBios() {
 		this.config.bios = new Map([
 			["Kayhan", "<br/> Kayhan: <br/> Hates chocolate!"],
 			["Nader", "<br/> Nader: <br/> Early bird!"],
@@ -33,36 +35,31 @@ Module.register("ourteam", {
 		]);
 	},
 
-	loaded: function(callback) {
+	loaded(callback) {
 		Log.log(this.name + ' is loaded!');
 		callback();
 	},
-	
-	getDom: function() {
+
+	getDom() {
 		if (this.config.images.length == 0) {
 			return this.showEntryMessage();
 		} else {
 			return this.showImages();
 		}
 	},
-	
-	getStyles: function() {
+
+	getStyles() {
 		return ["/modules/ourteam/css/main.css"];
 	},
-	
-	socketNotificationReceived: function(notification, payload) {
+
+	socketNotificationReceived(notification, payload) {
 		if (notification === "TEAM_IMAGES_FETCHED") {
 			this.config.images = payload;
-			var self = this;
-
-			var intervalId = setTimeout(function() {
-				self.updateDom();
-				clearTimeout(intervalId);
-			}, 5000);
+			setTimeout(() => this.updateDom(), 5000);
 		}
 	},
-	
-	showEntryMessage: function() {
+
+	showEntryMessage() {
 		var div = document.createElement('div');
 		div.setAttribute('id', 'team-welcome-message');
 		div.innerHTML = `
@@ -72,30 +69,30 @@ Module.register("ourteam", {
 		`;
 		return div;
 	},
-	
-	showImages: function() {
-		var self = this;
-		
+
+	showImages() {
 		if (!this.config.startedInterval) {
 			this.config.startedInterval = true;
-			var intervalId = setInterval(function() {
-				if (self.config.loopIndex < self.config.images.length) {
-					self.updateDom();
+			var intervalId = setInterval(() => {
+				if (this.config.loopIndex < this.config.images.length) {
+					this.updateDom();
 				} else {
 					clearInterval(intervalId);
 				}
 			}, 6000);
 		}
-		var name = this.config.images[this.config.loopIndex].split('.')[0];
+		var imageName = this.config.images[this.config.loopIndex].split('.')[0];
 		var path = this.config.relPath + this.config.images[this.config.loopIndex++];
-		return this.createImageElement(path, name);
+		return this.createImageElement(path, imageName);
 	},
-	
-	createImageElement: function(imagePath, name) {
-		var bioTxt = this.config.bios.get(name);
+
+	createImageElement(imagePath, imageName) {
+		var bioTxt = this.config.bios.get(imageName);
+
 		if (!bioTxt) {
-			bioTxt = 'Oops!<br/>Unable to get the bio for ' + name;	
+			bioTxt = 'Oops!<br/>Unable to get the bio for ' + imageName;
 		}
+
 		var div = document.createElement('div');
 		var imgBioElementString = `
 		<div id="team-member-intro-whole">

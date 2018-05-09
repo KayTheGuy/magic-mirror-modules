@@ -6,13 +6,13 @@
 var fs = require('fs');
 var imageFormats = ['jpg', 'png', 'JPG', 'jpg2000'];
 
-var getPics = function(path) {
+var getPics = path => {
     return fs.readdirSync(path).filter(hasValidImageType);
 };
 
-var hasValidImageType = function(filename) {
+var hasValidImageType = filename => {
     var result = false;
-    imageFormats.forEach( function(format) {
+    imageFormats.forEach(format => {
         if (filename.endsWith(format)) {
             result = true;
             return;
