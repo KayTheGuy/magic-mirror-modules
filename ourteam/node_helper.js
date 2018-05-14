@@ -13,7 +13,6 @@ module.exports = NodeHelper.create({
             var images = utils.getPics(payload.path);
             this.sendSocketNotification("TEAM_IMAGES_FETCHED", images);
         }
-        return;
     }
 
 });
