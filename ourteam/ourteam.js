@@ -6,7 +6,6 @@
 
 Module.register("ourteam", {
 	defaults: {
-		relPath: '/modules/ourteam/pics/',
 		images: [],
 		loopIndex: 0,
 		startedInterval: false,
@@ -14,14 +13,12 @@ Module.register("ourteam", {
 	},
 
 	start() {
-		Log.log(this.name + ' is started!');
+		Log.log(this.name + " is started!");
 		if (!this.config.bios) {
 			this.setUpBios();
 		}
 		if (this.config.images.length == 0) {
-			this.sendSocketNotification("GET_TEAM_IMAGES", {
-				"path": ('.' + this.config.relPath)
-			});
+			this.sendSocketNotification("GET_TEAM_IMAGES", { "path": this.file("/pics/")});
 		}
 	},
 
@@ -36,7 +33,7 @@ Module.register("ourteam", {
 	},
 
 	loaded(callback) {
-		Log.log(this.name + ' is loaded!');
+		Log.log(this.name + " is loaded!");
 		callback();
 	},
 
@@ -49,7 +46,7 @@ Module.register("ourteam", {
 	},
 
 	getStyles() {
-		return ["/modules/ourteam/css/main.css"];
+		return [this.file("/css/main.css")];
 	},
 
 	socketNotificationReceived(notification, payload) {
@@ -60,8 +57,8 @@ Module.register("ourteam", {
 	},
 
 	showEntryMessage() {
-		var div = document.createElement('div');
-		div.setAttribute('id', 'team-welcome-message');
+		var div = document.createElement("div");
+		div.setAttribute("id", "team-welcome-message");
 		div.innerHTML = `
 		Hi Folks! <br/><br/> 
 		Welocme to SAP\'s first Magic Mirror! <br/><br/>
@@ -82,7 +79,7 @@ Module.register("ourteam", {
 			}, 6000);
 		}
 		var imageName = this.config.images[this.config.loopIndex].split('.')[0];
-		var path = this.config.relPath + this.config.images[this.config.loopIndex++];
+		var path = this.file("/pics/") + this.config.images[this.config.loopIndex++];
 		return this.createImageElement(path, imageName);
 	},
 
@@ -90,10 +87,10 @@ Module.register("ourteam", {
 		var bioTxt = this.config.bios.get(imageName);
 
 		if (!bioTxt) {
-			bioTxt = 'Oops!<br/>Unable to get the bio for ' + imageName;
+			bioTxt = "Oops!<br/>Unable to get the bio for " + imageName;
 		}
 
-		var div = document.createElement('div');
+		var div = document.createElement("div");
 		var imgBioElementString = `
 		<div id="team-member-intro-whole">
 			<div id="team-member-img-wrapper">

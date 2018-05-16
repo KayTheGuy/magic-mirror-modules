@@ -3,8 +3,8 @@
  * 	May 6 2018 
  */
 
-var fs = require('fs');
-var imageFormats = ['jpg', 'png', 'JPG', 'jpg2000'];
+var fs = require("fs");
+var imageFormats = ["jpg", "png", "JPG", "jpg2000"];
 
 var getPics = path => {
     return fs.readdirSync(path).filter(hasValidImageType);
