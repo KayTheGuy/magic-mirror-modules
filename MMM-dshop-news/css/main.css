@@ -1,0 +1,37 @@
+@font-face {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 100;
+    src:
+      local("Nunito"),
+      url("/modules/news/fonts/Nunito-Regular.ttf") format("truetype");
+}
+
+@keyframes spinnerTurn { 
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+.spinner {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 3px solid rgb(144, 103, 0);
+	border-top-color: rgb(240, 171, 0);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -40px; 
+	margin-left: -40px;
+	animation: spinnerTurn 1s infinite cubic-bezier(1, 0.3, 0.3, 0.7);
+}
+
+p {
+	font-size: 80%;
+}
+
+.highlight {
+	color: rgb(240, 171, 0);
+}

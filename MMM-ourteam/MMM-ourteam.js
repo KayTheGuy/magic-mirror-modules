@@ -4,7 +4,7 @@
  * 	May 6 2018 
  */
 
-Module.register("ourteam", {
+Module.register("MMM-ourteam", {
 	defaults: {
 		images: [],
 		loopIndex: 0,
