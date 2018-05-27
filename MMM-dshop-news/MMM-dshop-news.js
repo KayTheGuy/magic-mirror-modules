@@ -6,7 +6,7 @@
 Module.register("MMM-dshop-news", {
 	defaults: {
 		isLoading: true,
-		testNum: 0
+		contentIndex: 0
 	},
 
 	start() {
@@ -24,36 +24,20 @@ Module.register("MMM-dshop-news", {
 
         if(this.config.isLoading) {
 			content = this.createSpinner();
-
-			// simulate API delay
-			setTimeout(() => {
-				this.config.isLoading = false;
-				this.updateDom();
-			}, 3000);
-
-		} else {
-			if (this.config.testNum === 0) {
-				content = this.createStaticContent();
-			} else if (this.config.testNum === 1) {
-				content = this.showImage("1.jpg");
-			} else if (this.config.testNum === 2) {
-				content = this.showImage("2.jpg");
-				this.config.testNum = -1;
-			}
-
-			this.config.testNum++;
-			// simulate sensor command
-			setTimeout(() => {
-				this.updateDom();
-			}, 2000);
-		}
-
+		} 
+		
+		content = this.createStaticContent();
 		return content;
 	},
 
-	notificationReceived: function(notification, payload, sender) {
+	notificationReceived(notification, payload, sender) {
 		if (sender) {
 			if (sender.name === "MMM-skywriter" && notification === "SENSOR_SWIPED") {
+				if (payload.action === "right") {
+					this.config.contentIndex++;
+				} else if (payload.action === "left") {
+					this.config.contentIndex--;
+				}
 				this.updateDom();
 			}
 		} 
@@ -70,7 +54,14 @@ Module.register("MMM-dshop-news", {
 	},
 
 	getNews(url, key) {
-		this.sendSocketNotification("GET_NEWS", {url: url, key: key});
+		// this.sendSocketNotification("GET_NEWS", {url: url, key: key});
+		
+		// simulate API delay
+		setTimeout(() => {
+			this.config.isLoading = false;
+			this.updateDom();
+		}, 
+		3000);
 	},
 
 	socketNotificationReceived(notification, payload) {
@@ -80,6 +71,22 @@ Module.register("MMM-dshop-news", {
 	},
 	
 	createStaticContent() {
+
+		if (this.config.contentIndex < 0) {
+			this.config.contentIndex = 3;
+		} else if (this.config.contentIndex === 0) {
+			return this.createIntro();
+		} else if (this.config.contentIndex === 1) {
+			return this.showImage("1.jpg");
+		} else if (this.config.contentIndex === 2) {
+			return this.showImage("2.jpg");
+		} else {
+			this.config.contentIndex = -1;
+		}
+
+	},
+
+	createIntro() {
 		var newsDiv = document.createElement("div");
 
 		var contentText = `
@@ -119,6 +126,6 @@ Module.register("MMM-dshop-news", {
 
 		imageDiv.innerHTML = contentText.trim();
 		return imageDiv;
-	}
-    
+	},
+
 });
