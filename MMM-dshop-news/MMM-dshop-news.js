@@ -6,7 +6,8 @@
 Module.register("MMM-dshop-news", {
 	defaults: {
 		isLoading: true,
-		contentIndex: 0
+		contentIndex: 0,
+		lastAction: ""
 	},
 
 	start() {
@@ -33,11 +34,13 @@ Module.register("MMM-dshop-news", {
 	notificationReceived(notification, payload, sender) {
 		if (notification === "SENSOR_SWIPED") {
 			if (payload.action === "right") {
+				this.config.lastAction = "right";
 				this.config.contentIndex++;
 				if (this.config.contentIndex > 2) {
 					this.config.contentIndex = 0; 
 				}
 			} else if (payload.action === "left") {
+				this.config.lastAction = "left";
 				this.config.contentIndex--;
 				if (this.config.contentIndex < 0) {
 					this.config.contentIndex = 2; 
@@ -64,8 +67,7 @@ Module.register("MMM-dshop-news", {
 		setTimeout(() => {
 			this.config.isLoading = false;
 			this.updateDom();
-		}, 
-		3000);
+		}, 3000);
 	},
 
 	socketNotificationReceived(notification, payload) {
@@ -76,8 +78,9 @@ Module.register("MMM-dshop-news", {
 	
 	createStaticContent() {
 		var newsDiv = document.createElement("div");
-		newsDiv.setAttribute("class", "news-content");
-
+		newsDiv.setAttribute("id", "news-content-div");
+		newsDiv.setAttribute("class", this.config.lastAction);
+		
 		if (this.config.contentIndex === 0) {
 			newsDiv.innerHTML = this.getIntro();
 		} else if (this.config.contentIndex === 1) {
