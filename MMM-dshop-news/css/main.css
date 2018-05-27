@@ -28,8 +28,8 @@
 	animation: spinnerTurn 1s infinite cubic-bezier(1, 0.3, 0.3, 0.7);
 }
 
-p {
-	font-size: 80%;
+* {
+	font-size: 100%;
 }
 
 .highlight {

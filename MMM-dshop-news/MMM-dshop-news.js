@@ -31,16 +31,14 @@ Module.register("MMM-dshop-news", {
 	},
 
 	notificationReceived(notification, payload, sender) {
-		if (sender) {
-			if (sender.name === "MMM-skywriter" && notification === "SENSOR_SWIPED") {
-				if (payload.action === "right") {
-					this.config.contentIndex++;
-				} else if (payload.action === "left") {
-					this.config.contentIndex--;
-				}
-				this.updateDom();
+		if (notification === "SENSOR_SWIPED") {
+			if (payload.action === "right") {
+				this.config.contentIndex++;
+			} else if (payload.action === "left") {
+				this.config.contentIndex--;
 			}
-		} 
+			this.updateDom();
+		}
 	},
 
 	createSpinner() {
@@ -90,10 +88,6 @@ Module.register("MMM-dshop-news", {
 		var newsDiv = document.createElement("div");
 
 		var contentText = `
-		<h4>
-		<span class="highlight"> SAP’s global in-house makerspace</span> that aims to impassion and enable colleagues’ and community members’ interest in technology by bringing the latest technology concepts and devices closer to everyone through workshops, demos, and interactive events.
-		</h4>
-		<br>
 		<p>
 		<span class="highlight"> D-shop's Vancouver branch </span> officially launched in May 2016! Monthly workshops are available to anyone interested and will cover various topics related to the Internet of Things (IOT), such as 3D printing, drones, and the Oculus Rift. The d-shop is SAP's pioneer makerspace for developers to meet and collaborate, to explore and learn, and, of course, to invent and build.
 		</p>
