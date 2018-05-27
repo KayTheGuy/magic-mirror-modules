@@ -7,9 +7,20 @@
       url("/modules/news/fonts/Nunito-Regular.ttf") format("truetype");
 }
 
-@keyframes spinnerTurn { 
+@keyframes rotate { 
 	100% {
 		transform: rotateZ(360deg);
+	}
+}
+
+@keyframes pop-up {
+	0% {
+		transform: scale(0.25);
+	  	opacity: 0;
+	}
+	100% {
+	    transform: scale(1);
+	  	opacity: 1;
 	}
 }
 
@@ -25,7 +36,7 @@
 	left: 50%;
 	margin-top: -40px; 
 	margin-left: -40px;
-	animation: spinnerTurn 1s infinite cubic-bezier(1, 0.3, 0.3, 0.7);
+	animation: rotate 1s infinite cubic-bezier(1, 0.3, 0.3, 0.7);
 }
 
 * {
@@ -34,4 +45,8 @@
 
 .highlight {
 	color: rgb(240, 171, 0);
+}
+
+.news-content {
+	animation: pop-up 1s normal cubic-bezier(1, 0.3, 0.3, 0.7);
 }

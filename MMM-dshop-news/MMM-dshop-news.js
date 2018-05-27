@@ -34,8 +34,14 @@ Module.register("MMM-dshop-news", {
 		if (notification === "SENSOR_SWIPED") {
 			if (payload.action === "right") {
 				this.config.contentIndex++;
+				if (this.config.contentIndex > 2) {
+					this.config.contentIndex = 0; 
+				}
 			} else if (payload.action === "left") {
 				this.config.contentIndex--;
+				if (this.config.contentIndex < 0) {
+					this.config.contentIndex = 2; 
+				}
 			}
 			this.updateDom();
 		}
@@ -69,24 +75,21 @@ Module.register("MMM-dshop-news", {
 	},
 	
 	createStaticContent() {
+		var newsDiv = document.createElement("div");
+		newsDiv.setAttribute("class", "news-content");
 
-		if (this.config.contentIndex < 0) {
-			this.config.contentIndex = 3;
-		} else if (this.config.contentIndex === 0) {
-			return this.createIntro();
+		if (this.config.contentIndex === 0) {
+			newsDiv.innerHTML = this.getIntro();
 		} else if (this.config.contentIndex === 1) {
-			return this.showImage("1.jpg");
+			newsDiv.innerHTML = this.getImage("1.jpg");
 		} else if (this.config.contentIndex === 2) {
-			return this.showImage("2.jpg");
-		} else {
-			this.config.contentIndex = -1;
-		}
+			newsDiv.innerHTML = this.getImage("2.jpg");
+		} 
 
+		return newsDiv;
 	},
 
-	createIntro() {
-		var newsDiv = document.createElement("div");
-
+	getIntro() {
 		var contentText = `
 		<p>
 		<span class="highlight"> D-shop's Vancouver branch </span> officially launched in May 2016! Monthly workshops are available to anyone interested and will cover various topics related to the Internet of Things (IOT), such as 3D printing, drones, and the Oculus Rift. The d-shop is SAP's pioneer makerspace for developers to meet and collaborate, to explore and learn, and, of course, to invent and build.
@@ -102,12 +105,10 @@ Module.register("MMM-dshop-news", {
 		<br>
 		`;
 
-		newsDiv.innerHTML = contentText.trim();
-		return newsDiv;
+		return contentText.trim();
 	},
 
-	showImage(fileName) {
-		var imageDiv = document.createElement("div");
+	getImage(fileName) {
 		var path = this.file("/files/images/") + fileName;
 
 		var contentText = `
@@ -118,8 +119,7 @@ Module.register("MMM-dshop-news", {
 		<img src="${path}" alt="image preview" />
 		`;
 
-		imageDiv.innerHTML = contentText.trim();
-		return imageDiv;
+		return contentText.trim();
 	},
 
 });
