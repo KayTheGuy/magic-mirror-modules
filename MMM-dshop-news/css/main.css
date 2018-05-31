@@ -26,12 +26,12 @@
 	0% {
 		opacity: 0;
 		transform: rotateY(80deg);
-		transform-origin: right;
+		transform-origin: left;
 	}
 	100% {
 		opacity: 1;
 		transform: rotateY(0deg);
-		transform-origin: right;
+		transform-origin: left;
 	}
 }
 
@@ -39,12 +39,12 @@
 	0% {
 		opacity: 0;
 		transform: rotateY(80deg);
-		transform-origin: left;
+		transform-origin: right;
 	}
 	100% {
 		opacity: 1;
 		transform: rotateY(0deg);
-		transform-origin: left;
+		transform-origin: right;
 	}
 }
 
@@ -76,9 +76,9 @@
 }
 
 #news-content-div.right {
-	animation: swipe-right 1s normal cubic-bezier(1, 0.1, 0.2, 1);
+	animation: swipe-right 0.4s normal cubic-bezier(1, 0.1, 0.2, 1);
 }
 
 #news-content-div.left {
-	animation: swipe-left 1s normal cubic-bezier(1, 0.1, 0.2, 1);
+	animation: swipe-left 0.4s normal cubic-bezier(1, 0.1, 0.2, 1);
 }
