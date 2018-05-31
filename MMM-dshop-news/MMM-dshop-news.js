@@ -5,7 +5,7 @@
 
 Module.register("MMM-dshop-news", {
 	defaults: {
-		isLoading: true,
+		isLoading: false,
 		contentIndex: 0,
 		lastAction: ""
 	},
@@ -36,7 +36,7 @@ Module.register("MMM-dshop-news", {
 			if (payload.action === "right") {
 				this.config.lastAction = "right";
 				this.config.contentIndex++;
-				if (this.config.contentIndex > 2) {
+				if (this.config.contentIndex > 4) {
 					this.config.contentIndex = 0; 
 				}
 			} else if (payload.action === "left") {
@@ -81,32 +81,44 @@ Module.register("MMM-dshop-news", {
 		newsDiv.setAttribute("id", "news-content-div");
 		newsDiv.setAttribute("class", this.config.lastAction);
 		
-		if (this.config.contentIndex === 0) {
-			newsDiv.innerHTML = this.getIntro();
-		} else if (this.config.contentIndex === 1) {
-			newsDiv.innerHTML = this.getImage("1.jpg");
+		if (this.config.contentIndex === 0 || this.config.contentIndex === 1) {
+			newsDiv.innerHTML = this.getIntro(this.config.contentIndex);
 		} else if (this.config.contentIndex === 2) {
+			newsDiv.innerHTML = this.getImage("1.jpg");
+		} else if (this.config.contentIndex === 3) {
 			newsDiv.innerHTML = this.getImage("2.jpg");
+		} else if (this.config.contentIndex === 4) {
+			newsDiv.innerHTML = this.getImage("dshop speakers-01.jpg");
 		} 
 
 		return newsDiv;
 	},
 
-	getIntro() {
-		var contentText = `
-		<p>
-		<span class="highlight"> D-shop's Vancouver branch </span> officially launched in May 2016! Monthly workshops are available to anyone interested and will cover various topics related to the Internet of Things (IOT), such as 3D printing, drones, and the Oculus Rift. The d-shop is SAP's pioneer makerspace for developers to meet and collaborate, to explore and learn, and, of course, to invent and build.
-		</p>
-		<p>
-		<br>
-		Do you ever get the urge to be a kid again? Here’s your chance to be one - and at work no less! Join us in experiencing and experimenting with exciting, novel technologies.
-		</p>
-		<br>
-		<h5>
-		"The mission of d-shop global program is to bring new technologies closer to all  <span class="highlight">SAP employees</span>"
-		</h5>
-		<br>
-		`;
+	getIntro(i) {
+		var contentText = '';
+		if (i === 0) {
+			var path = this.file("/files/images/") + 'sensor.gif';
+			contentText = `
+			<h4>
+			Get your <span class="highlight"> d-shop Vancouver</span> news, event and content on our Magic Mirror
+			</h4>
+			<img src="${path}" alt="image preview"/>
+			`;
+		} else if (i === 1) {
+			contentText = `
+			<span class="highlight"> D-shop's Vancouver branch </span> officially launched in May 2016! Monthly workshops are available to anyone interested and will cover various topics related to the Internet of Things (IOT), such as 3D printing, drones, and the Oculus Rift. The d-shop is SAP's pioneer makerspace for developers to meet and collaborate, to explore and learn, and, of course, to invent and build.
+			</p>
+			<p>
+			<br>
+			Do you ever get the urge to be a kid again? Here’s your chance to be one - and at work no less! Join us in experiencing and experimenting with exciting, novel technologies.
+			</p>
+			<br>
+			<h5>
+			"The mission of d-shop global program is to bring new technologies closer to all  <span class="highlight">SAP employees</span>"
+			</h5>
+			<br>
+			`;
+		}
 
 		return contentText.trim();
 	},
@@ -118,7 +130,7 @@ Module.register("MMM-dshop-news", {
 		<h4>
 		<span class="highlight"> D-shop's Vancouver branch</span>
 		</h4>
-		<p>May 23, 2018</p>
+		<p>Date and location: May 28th at Mako</p>
 		<img src="${path}" alt="image preview" />
 		`;
 
