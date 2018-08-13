@@ -1,0 +1,22 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "this module is responsible to get news from custom sources",
+  "main": "news.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayhandehghani/magic-mirror-modules.git"
+  },
+  "author": "Kayhan Dehghani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kayhandehghani/magic-mirror-modules/issues"
+  },
+  "homepage": "https://github.com/kayhandehghani/magic-mirror-modules#readme",
+  "dependencies": {
+    "node-fetch": "2.1.1"
+  }
+}
