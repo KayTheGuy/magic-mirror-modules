@@ -1,8 +1,8 @@
 import time
 import sys
 
-print('hello')
+print('left')
 sys.stdout.flush()
 time.sleep(5)
-print('goodbye')
+print('right')
 sys.stdout.flush()
