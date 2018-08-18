@@ -1,3 +1,6 @@
+*package-lock.json
+*private_config.json
+
 # Logs
 logs
 *.log
