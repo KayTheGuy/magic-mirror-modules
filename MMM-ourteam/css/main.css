@@ -1,0 +1,56 @@
+@font-face {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 100;
+    src:
+      local("Nunito"),
+      url("/modules/ourteam/fonts/Nunito-Regular.ttf") format("truetype");
+}
+
+@keyframes pop-up {
+	0% {
+		transform: scale(0.25);
+	  	opacity: 0;
+	}
+	100% {
+	    transform: scale(1);
+	  	opacity: 1;
+	}
+}
+
+@keyframes shrink {
+	0% {
+      	transform: scale(2);
+	  	opacity: 0;
+	}
+	100% {
+	  	transform: scale(1);
+	  	opacity: 1;
+	}
+}
+
+#team-member-intro-whole, #team-welcome-message {
+    font-family: Nunito;
+    font-size: 110%;
+}
+
+#team-member-intro-whole {
+    animation: pop-up 1s cubic-bezier(0.8, 0.575, 0.565, 1.000) both;
+}
+
+#team-welcome-message {
+    animation: shrink 1s cubic-bezier(0.8, 0.575, 0.565, 1.000) both;
+}
+
+#team-member {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#team-member-img-wrapper {
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+}

@@ -1,0 +1,84 @@
+@font-face {
+	font-family: Nunito;
+	font-style: normal;
+	font-weight: 100;
+	src: local("Nunito"), url("/modules/news/fonts/Nunito-Regular.ttf") format("truetype");
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+@keyframes scale-up {
+	0% {
+		transform: scale(0.25);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes swipe-right {
+	0% {
+		opacity: 0;
+		transform: rotateY(80deg);
+		transform-origin: left;
+	}
+	100% {
+		opacity: 1;
+		transform: rotateY(0deg);
+		transform-origin: left;
+	}
+}
+
+@keyframes swipe-left {
+	0% {
+		opacity: 0;
+		transform: rotateY(80deg);
+		transform-origin: right;
+	}
+	100% {
+		opacity: 1;
+		transform: rotateY(0deg);
+		transform-origin: right;
+	}
+}
+
+.spinner {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 3px solid rgb(144, 103, 0);
+	border-top-color: rgb(240, 171, 0);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -40px;
+	margin-left: -40px;
+	animation: rotate 1s infinite cubic-bezier(1, 0.3, 0.3, 0.7);
+}
+
+* {
+	font-size: 100%;
+}
+
+.highlight {
+	color: rgb(240, 171, 0);
+}
+
+#news-content-div {
+	animation: scale-up 1s normal cubic-bezier(1, 0.1, 0.2, 0.8);
+}
+
+#news-content-div.right {
+	animation: swipe-right 0.4s normal cubic-bezier(1, 0.1, 0.2, 1);
+}
+
+#news-content-div.left {
+	animation: swipe-left 0.4s normal cubic-bezier(1, 0.1, 0.2, 1);
+}
