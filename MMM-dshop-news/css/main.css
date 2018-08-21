@@ -1,8 +1,22 @@
 @font-face {
-	font-family: Nunito;
+	font-family: Questrial;
+	src: local("Questrial"), url("/modules/MMM-dshop-news/fonts/Questrial-Regular.ttf") format("truetype");
+	font-weight: normal;
 	font-style: normal;
-	font-weight: 100;
-	src: local("Nunito"), url("/modules/news/fonts/Nunito-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: Quicksand;
+	src: local("Quicksand"), url("/modules/MMM-dshop-news/fonts/Quicksand-Medium.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Quicksand;
+	src: local("Quicksand"), url("/modules/MMM-dshop-news/fonts/Quicksand-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
 }
 
 @keyframes rotate {
@@ -81,7 +95,12 @@
 	float: left;
 }
 
+#news-title, #news-location, #news-date {
+	font-family: Quicksand;
+}
+
 p.description  {
+	font-family: Questrial;
 	margin: 20px;
 	font-size: 180%;
 	line-height: 150%;
