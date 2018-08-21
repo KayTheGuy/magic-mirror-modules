@@ -56,7 +56,7 @@ Module.register("MMM-dshop-news", {
 					<h2 id="news-title" class="highlight">${title}</h2>
 					</div>
 					<div class="mdl-grid">
-					<h5 id="news-location" class="highlight">${location},
+					<h5 id="news-location" class="highlight">${location}
 					<br/>
 					<h6 id="news-date" class="highlight">${date}</h6>
 				</div>
