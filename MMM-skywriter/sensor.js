@@ -5,25 +5,23 @@
  *	@Author:
  *  	Kai Sackville-Hii
  * 	@Date:
- * 		May, 2018 ckk
+ * 		May, 2018
  */
 
 const { spawn } = require('child_process');
 
 function listen(os, nh){
   var cmd = null;
-
   // change spawn based on os
   if(os === 'Win32') {
       cmd = spawn('cmd', ['/c', 'py', './modules/MMM-skywriter/test.py']);
   }
   else {
-      cmd = spawn('python',['./modules/MMM-skywriter/sensor.py'])
+      cmd = spawn('python',['./modules/MMM-skywriter/sensor.py']);
   }
-
   cmd.stdout.on('data', (data) => {
-    var str_data = data.toString()
-    str_data = str_data.slice(0,-1)
+    var str_data = data.toString();
+    str_data = str_data.slice(0,-1);
     // console.log(typeof(str_data));
     // if (str_data === 'sensed') {
     //   console.log('here');
