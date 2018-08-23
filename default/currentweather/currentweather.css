@@ -1,10 +1,16 @@
-#module_1_currentweather * {
-  margin: 6px;
+
+.currentweather {
+  margin-left: 30px;
+  margin-top: 30px;
 }
+
+.currentweather span {
+  font-size: 70%;
+}
+
 .currentweather .weathericon,
 .currentweather .fa-home {
-  font-size: 75%;
-  line-height: 65px;
+  line-height: 60px;
   display: inline-block;
   -ms-transform: translate(0, -3px); /* IE 9 */
   -webkit-transform: translate(0, -3px); /* Safari */

@@ -1,6 +1,5 @@
 /**
  *  By Kayhan Dehghani: http://www.kayhandehghani.com/
- * 		 Kai Sackville-Hii
  * 	May 15 2018
  */
 
@@ -38,17 +37,15 @@ Module.register("MMM-dshop-news", {
 	},
 	
 	createSpinner() {
-		// TODO: add proper spinner
 		var spinner = document.createElement("div");
-		// spinner.setAttribute("class", "spinner");
-		spinner.innerHTML = `<div>Loading ... </div>`;
+		spinner.id = "spinner";
 		return spinner;
 	},
 	
 	createTemplate(title, date, location, description, imagePath) {
 		// TODO: carousel with multiple images
 		let contentDiv = document.createElement("div");
-		contentDiv.className = "news-content";
+		contentDiv.id = "news-content";
 		contentDiv.innerHTML = `
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--4-col">

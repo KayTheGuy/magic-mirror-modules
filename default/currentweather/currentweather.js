@@ -118,6 +118,7 @@ Module.register("currentweather",{
 	addExtraInfoWeather: function(wrapper) {
 
 		var small = document.createElement("div");
+		small.id = "weather-div";
 		small.className = "normal medium";
 
 		var windIcon = document.createElement("span");
