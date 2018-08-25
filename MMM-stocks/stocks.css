@@ -1,0 +1,20 @@
+marquee {
+    margin: 30px;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 50s linear infinite;
+    -webkit-animation: marquee 50s linear infinite;
+}
+
+.down {
+    color: red;
+}
+
+.up {
+    color: green;
+}
