@@ -48,22 +48,27 @@ Module.register("MMM-dshop-news", {
 		contentDiv.id = "news-content";
 		contentDiv.innerHTML = `
 		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col">
-				<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--1-col">
+			</div>
+			<div class="mdl-cell mdl-cell--10-col">
+				<div id="news-title-div" class="mdl-grid">
 					<h2 id="news-title" class="highlight">${title}</h2>
-					</div>
-					<div class="mdl-grid">
+				</div>
+				<div id="news-location-div" class="mdl-grid">
 					<h5 id="news-location" class="highlight">${location}
-					<br/>
+				</div>
+				<div id="news-date-div" class="mdl-grid">
 					<h6 id="news-date" class="highlight">${date}</h6>
 				</div>
+				<div id="news-image-div" class="mdl-grid">
+					<img id="news-image" src=${this.config.url + imagePath}/>
+				</div>
+				<div id="news-description-div" class="mdl-grid">
+					<p id="news-description" >${description}</p>
+				</div>
 			</div>
-			<div id="news-image-div" class="mdl-cell mdl-cell--8-col">
-				<img id="news-image" src=${this.config.url + imagePath}/>
+			<div class="mdl-cell mdl-cell--1-col">
 			</div>
-		</div>
-		<div class="mdl-grid">
-			<p class="description">${description}</p>
 		</div>
 		`;
 		return contentDiv;
