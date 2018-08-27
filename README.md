@@ -1,3 +1,4 @@
+```json
 var config = {
 	address: "localhost", 
 	port: 8080,
@@ -37,4 +38,4 @@ var config = {
 const newLocal = "undefined";
 /*************** DO NOT EDIT THE LINE BELOW ***************/
 if (typeof module !== newLocal) {module.exports = config;}
-
+```
