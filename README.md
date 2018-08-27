@@ -1,4 +1,4 @@
-```json
+```
 var config = {
 	address: "localhost", 
 	port: 8080,
