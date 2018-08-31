@@ -1,4 +1,4 @@
-Module.register("MMM-stocks", {
+Module.register("stocks", {
   result: [],
   defaults: {
     stocks: 'SAP,',

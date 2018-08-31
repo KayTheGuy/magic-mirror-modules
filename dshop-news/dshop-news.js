@@ -3,7 +3,7 @@
  * 	May 15 2018
  */
 
-Module.register("MMM-dshop-news", {
+Module.register("dshop-news", {
 	defaults: {
 		isLoading: true,
 		contentIndex: 0,
@@ -16,12 +16,12 @@ Module.register("MMM-dshop-news", {
 		let url = this.config.url + "forms";
 		this.callUrl(url);
 	},
-
+	
 	loaded(callback) {
 		Log.log(this.name + " is loaded!");
 		callback();
 	},
-
+	
 	getDom() {
 		var content = document.createElement("div");
 		if (this.config.isLoading) {

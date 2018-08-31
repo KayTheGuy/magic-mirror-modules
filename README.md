@@ -9,7 +9,7 @@ var config = {
 
 	modules: [
 		{
-			module: "MMM-dshop-news",
+			module: "dshop-news",
 			position: "middle_center",	
 			config: {
 				url: "http://localhost:5000/",
@@ -17,7 +17,7 @@ var config = {
 			}
 		},
 		{
-			module: "MMM-stocks",
+			module: "stocks",
 			position: "top_right",	
 			config: {
 			}
