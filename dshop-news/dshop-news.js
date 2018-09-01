@@ -76,18 +76,24 @@ Module.register("dshop-news", {
 		if (sender && sender.name === "MMM-Flick" && notification === "SENSOR_SWIPED") {
 			switch (payload.action) {
 				case 'right':
-				if (this.config.contentIndex < this.config.forms.length - 1) {
-					this.config.contentIndex++;
-					this.swipeHelper(payload.action);
-				}
-				break;
+					if (this.config.contentIndex < this.config.forms.length - 1) {
+						this.config.contentIndex++;
+						this.swipeHelper(payload.action);
+					}
+					break;
 				case 'left':
-				if (this.config.contentIndex > 0) {
-					this.config.contentIndex--;
-					this.swipeHelper(payload.action);
-				}
-				break;
+					if (this.config.contentIndex > 0) {
+						this.config.contentIndex--;
+						this.swipeHelper(payload.action);
+					}
+					break;
+				case 'airwheel':
+					this.hide();
+					break;
 			}
+		} else if (sender && sender.name === "dshop-menu" && notification === "NEWS_SELECT") {
+			sender.hide();
+			this.show();
 		}
 	},
 
