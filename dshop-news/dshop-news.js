@@ -67,9 +67,8 @@ Module.register("dshop-news", {
 			</div>
 			<div class="mdl-cell mdl-cell--1-col">
 			</div>
-		</div>
-		`;
-		return contentDiv;
+		</div>`;
+		return contentDiv;  
 	},
 
 	notificationReceived(notification, payload, sender) {
@@ -103,7 +102,7 @@ Module.register("dshop-news", {
 	},
 
 	getStyles() {
-		return [this.file("/css/main.css"), this.file("/css/material.min.css")];
+		return [this.file("/css/news.css"), this.file("/css/material.min.css")];
 	},
 
 	callUrl(url) {

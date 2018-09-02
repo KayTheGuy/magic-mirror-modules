@@ -31,7 +31,13 @@ Module.register("dshop-menu", {
 			<div class="mdl-cell mdl-cell--1-col">
 			</div>
 			<div class="mdl-cell mdl-cell--10-col">
-				MENU MENU
+				<div id="menu-list">
+					<ul>
+						<li><img class="menu-icon" src="/modules/dshop-menu/files/icons/info.svg"></li>
+						<li><img class="menu-icon" src="/modules/dshop-menu/files/icons/newspaper.svg"></li>
+						<li><img class="menu-icon" src="/modules/dshop-menu/files/icons/survey.svg"></li>
+					</ul>
+				</div>
 			</div>
 			<div class="mdl-cell mdl-cell--1-col">
 			</div>
@@ -45,9 +51,9 @@ Module.register("dshop-menu", {
 			switch (payload.action) {
 				case 'airwheel':
 					this.show();
-					setTimeout(() => {
-						this.sendNotification("NEWS_SELECT");
-					}, 2000);
+					// setTimeout(() => {
+					// 	this.sendNotification("NEWS_SELECT");
+					// }, 2000);
 					break;
 				default:
 					this.hide();
@@ -57,7 +63,7 @@ Module.register("dshop-menu", {
 	},
 
 	getStyles() {
-		return [this.file("/css/main.css"), this.file("/css/material.min.css")];
+		return [this.file("/css/menu.css"), this.file("/css/material.min.css")];
 	}
 
 });
